@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 import os
 
-langs = ['it','en','devit','deven','localit','localen']
+langs = ['it','en','pool',
+         'devit','deven', 'devpool',
+         'localit','localen','localpool']
 
 #reading lang
 lang = os.environ.get('PYWIKIBOT_LANG')
@@ -9,13 +11,14 @@ lang = os.environ.get('PYWIKIBOT_LANG')
 #cheking langs
 if not lang in langs:
     print("Lang not supported. Please choose one of:")
-    print ('Production: it,en.')
-    print ('Testing: devit,deven.')
-    print ('Local: localit,localen.')
+    print ('Production: it,en,pool')
+    print ('Testing: devit,deven,devpool')
+    print ('Local: localit,localen,localpool')
     exit(1)
 
 #reading params
 PASSWORD = os.environ.get('PASSWORD')
+MODE = os.environ.get('MODE')
 
 #creating config
 f = open('user-config.py','w')
@@ -37,4 +40,4 @@ p.close()
 import check
 
 #star process
-check.main()
+check.main(MODE)
