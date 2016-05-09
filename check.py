@@ -16,6 +16,7 @@ def check_filename(page,simul):
     r = re.compile(r'\[\[File:\s*(.*?)\]\]')
     for match in re.finditer(r, page.text):
         f = match.group(1)
+        if len(f) == 0: continue;
         if f[0].islower():
             global errors
             errors+=1
